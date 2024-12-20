@@ -1,22 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maze Game</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Shifting dungeons</h1>
-    <div id="game_container">
-<div id="maze">
-    <div id="info-panel">
-        <p>time remaining <span id="timer>30"></span> seconds</p>
-        <p>Reach the green square if you can!</p>
-    </div>
+  <h1>Shifting Dungeons</h1>
+  <h3>Lowest Time Lapsed to reach goal</h3>
+  <div id="maze"></div>
+  <button id="shift-walls">Shift Walls</button>
+<br>
+<form id=""playerForm>
+  <div class="form-group">
+    <label for="timeInput">enter times (in seconds</label>
+    <input type="number" id="timeInput"placeholder="enter your time"
+  </div>
+  <button type="button" onclick="timeLapsed()">Add Time</button>
+  <button type="button" onclick="calculateLowestTime()">Calculate Lowest Time</button>
+</form>
+<div>
+  <h3>Times List:</h3>
+  <ul id="timesList"></ul>
 </div>
-    </div>
+<div id="best-time">Best Time: N/A</div>
 
-    <script src="script.js"></script>
+
+<div class="result" id="result"></div>
+  <script src="script.js"></script>
 </body>
 </html>
