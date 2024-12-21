@@ -111,7 +111,7 @@ const addPlayerAndGoal = () => {
     grid[mazeSize - 1][mazeSize - 1] = "goal";
 };
 
-// Shift walls and paths
+// Shift walls and paths are determined where the player and goal is not, if they are not present, it is either considered a path or a wall.
 const shiftWalls = () => {
     for (let i = 0; i < grid.length; i++) {
         for (let j = 0; j < grid[i].length; j++) {
@@ -130,7 +130,7 @@ const shiftWalls = () => {
     }
 };
 
-// Player movement
+// Player movement on the x, an y axis, defines the player movement for each cell in the x or y axis
 let playerPosition = { x: 0, y: 0 };
 const movePlayer = (dx, dy) => {
     const newX = playerPosition.x + dx;
@@ -162,7 +162,7 @@ const movePlayer = (dx, dy) => {
     }
 };
 
-// Keyboard controls
+// Basic directional controls using the arrow keys on the keyboard
 document.addEventListener("keydown", (event) => {
     switch (event.key) {
         case "ArrowUp":
