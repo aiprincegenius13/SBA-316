@@ -16,9 +16,6 @@ function generateMaze() {
         const cell = document.createElement("div");
         cell.classList.add("cell");
         cell.classList.add(Math.random() > 0.7 ? "wall" : "path");
-        // if (index ===playerPosition){
-        //     const player = document.createElement("div");
-        // }
         mazeContainer.appendChild(cell);
     }
 }
@@ -64,56 +61,25 @@ function stopStopwatch() {
 function resetStopwatch() {
     stopStopwatch();
     time = 0;
-    timeDisplay.textContent = '0:00';
+    timeDisplay.textContent = "0:00";
     generateMaze();
 }
 
-startStopButton.addEventListener('click', () => {
+startStopButton.addEventListener("click", () => {
     if (stopwatchRunning) {
         stopStopwatch();
-        startStopButton.textContent = 'Start';
+        startStopButton.textContent = "Start";
     } else {
         startStopwatch();
-        startStopButton.textContent = 'Stop';
+        startStopButton.textContent = "Stop";
     }
 });
 
-resetButton.addEventListener('click', resetStopwatch);
+resetButton.addEventListener("click", resetStopwatch);
 
 // Initialize maze on page load
 generateMaze();
 
-// // Player movement on the x, an y axis, defines the player movement for each cell in the x or y axis
-// let playerPosition = { x: 0, y: 0 };
-// const movePlayer = (dx, dy) => {
-//     const newX = playerPosition.x + dx;
-//     const newY = playerPosition.y + dy;
-
-//     if (
-//         newX >= 0 && newX < mazeSize &&
-//         newY >= 0 && newY < mazeSize &&
-//         grid[newY][newX] !== "wall"
-//     ) {
-//         // Update player position
-//         const currentCell = maze.children[playerPosition.y * mazeSize + playerPosition.x];
-//         currentCell.classList.remove("player");
-//         currentCell.classList.add("path");
-
-//         playerPosition.x = newX;
-//         playerPosition.y = newY;
-
-//         const newCell = maze.children[playerPosition.y * mazeSize + playerPosition.x];
-//         newCell.classList.remove("path");
-//         newCell.classList.add("player");
-
-//         // Check for goal
-//         if (grid[newY][newX] === "goal") {
-//             alert("You reached the goal");
-//             generateMaze();
-//             addPlayerAndGoal();
-//         }
-//     }
-// };
 
 // // Basic directional controls using the arrow keys on the keyboard
 // document.addEventListener("keydown", (event) => {

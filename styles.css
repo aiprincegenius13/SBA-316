@@ -37,8 +37,8 @@ body {
   background-color: greenyellow;
 }
 
-#time {
-
+.time {
+border: 1px, solid, black;
 }
 
 .player{
@@ -52,5 +52,5 @@ height: 25px;
 width: 30px;
 height:30px;
 border-radius: 50%;
-
+background-color: green;
 }
