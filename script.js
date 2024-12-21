@@ -18,17 +18,17 @@ function generateMaze() {
         cell.classList.add("cell");
         cell.classList.add(Math.random() > 0.7 ? "wall" : "path");
         cell.classList.add("cell");
-        maze.appendChild(cell);
+        mazeContainer.appendChild(cell);
     }
 }
 
 //generat random position within maze
-function generateRandomPosition(gridSize){
+function generateRandomPosition(gridSize) {
     return {
         x: Math.floor(Math.random() * gridSize),
         y: Math.floor(Math.random() * gridSize),
 
-    }
+    };
 }
 //Player and goal object
 const player = generateRandomPosition(gridSize);
@@ -39,8 +39,8 @@ function placeOnPath(entity){
     while (!isValid){
         const randPos = generateRandomPosition(gridSize);
         const Index = generateRandomPosition.y * gridSize + generateRandomPosition.x;
-        const cell = mazeContainer.children["index"];
-        if(cell.classList.contains("path"))  {
+        const cell = mazeContainer.children [Index];
+        if(cell.classList.contains(path))  {
             isValid = true;
             entity.x = generateRandomPosition.x;
             entity.y = generateRandomPosition.y;
@@ -57,19 +57,19 @@ function updateMaze(){
     cells.forEach(cell => cell.classList.remove("player", "goal"));
     const playerIndex = player.y * gridSize + player.x;
     const goalIndex = goal.y * gridSize + goal.x;
-    cells[playerIndex].classList.add("player");
-    cells[goalIndex].classList.add("goal");
+    cells[playerIndex].classList.add(player);
+    cells[goalIndex].classList.add(goal);
 }
 
 generateMaze();
-placeOnPath();
-placeOnPath();
+placeOnPath(player);
+placeOnPath(goal);
 updateMaze()
 
 // Move the player within the bounds of the grid
 function movePlayer(event) {
     let newX = player.x;
-    letnewY = player.y;
+    let newY = player.y;
     switch (event.key) {
       case "ArrowUp":
         if (player.y > 0) player.y--;
@@ -88,9 +88,9 @@ function movePlayer(event) {
     }
 
     const newIndex = newY * gridSize + newX;
-    const trargetCell = mazeContainer.children[newIndex];
+    const targetCell = mazeContainer.children[newIndex];
   
-    if (trargetCell.classList.contains("path")){
+    if (targetCell.classList.contains("path")){
         player.x = newX;
         player.y = newY;
 
@@ -125,7 +125,7 @@ function shiftMaze() {
 // Stopwatch functionality
 function startStopwatch() {
     if (stopwatchRunning) return;
-    startStopwatch = true;
+    stopwatchRunning = true;
 
     interval = setInterval(() => {
         time++;
@@ -148,7 +148,6 @@ function resetStopwatch() {
     stopStopwatch();
     time = 0;
     timeDisplay.textContent = "0:00";
-    generateMaze();
     generateMaze();
     placeOnPath(player);
     placeOnPath(goal);
